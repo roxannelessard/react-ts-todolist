@@ -1,10 +1,14 @@
 // React.FC (functional component) is already generic type
 // <{}> this define an object type with array of strings for the component props
-const Todos: React.FC<{items: string[]}> = (props) => {
+// the class Todo becomes a type
+import Todo from '../models/todo';
+import TodoItem from './TodoItem';
+
+const Todos: React.FC<{items: Todo[]}> = (props) => {
   return (
   <ul>
     {props.items.map((item) => (
-      <li key={item}>{item}</li>
+      <TodoItem key={item.id} text={item.text}/>
     ))}
   </ul>
   );
